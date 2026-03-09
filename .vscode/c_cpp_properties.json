@@ -1,0 +1,13 @@
+{
+	"configurations": [
+		{
+			"name": "Android NDK",
+			"compilerPath": "${env:ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe",
+			"cStandard": "c17",
+			"cppStandard": "c++17",
+			"intelliSenseMode": "windows-clang-x64",
+			"compileCommands": "${workspaceFolder}/zygisk-native-lib/build/x86_64/compile_commands.json"
+		}
+	],
+	"version": 4
+}
