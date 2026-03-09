@@ -1,15 +1,15 @@
 if ! $BOOTMODE; then
     ui_print "*********************************************************"
-    ui_print "! Установка из recovery НЕ ПОДДЕРЖИВАЕТСЯ"
-    ui_print "! Ставь через Magisk/KernelSU"
+    ui_print "! Installation from recovery is NOT SUPPORTED"
+    ui_print "! Use Magisk/KernelSU instead"
     abort "*********************************************************"
 fi
 
 if [ "$API" -lt 26 ]; then
-    abort "! Андроид ниже 8.0"
+    abort "! Android version lower than 8.0 is not supported"
 fi
 
-# Проверка Zygisk
+# Check Zygisk
 check_zygisk() {
     if [ -d "/data/adb/modules/zygisksu" ] || [ -d "/data/adb/modules/rezygisk" ]; then
         return 0
@@ -18,14 +18,14 @@ check_zygisk() {
     if [ -d "/data/adb/magisk" ]; then
         ZYGISK_STATUS=$(magisk --sqlite "SELECT value FROM settings WHERE key='zygisk';")
         if [ "$ZYGISK_STATUS" = "value=0" ]; then
-            abort "! Включи Zygisk в настройках Magisk или поставь ZygiskNext/ReZygisk"
+            abort "! Enable Zygisk in Magisk settings or install ZygiskNext/ReZygisk"
         fi
     else
-        abort "! Нужен Zygisk (включи в Magisk или поставь ZygiskNext)"
+        abort "! Zygisk is required (enable in Magisk or install ZygiskNext)"
     fi
 }
 
 check_zygisk
 
-ui_print "- Установка"
-ui_print "- Готово!"
+ui_print "- Installation"
+ui_print "- Done!"
